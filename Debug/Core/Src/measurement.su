@@ -1,0 +1,4 @@
+../Core/Src/measurement.c:16:6:callibration	8	static
+../Core/Src/measurement.c:21:6:mux_select	24	static
+../Core/Src/measurement.c:32:6:measurement	344	static
+../Core/Src/measurement.c:84:6:values_eval	32	static

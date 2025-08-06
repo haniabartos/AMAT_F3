@@ -1,0 +1,4 @@
+../Core/Src/measurement.c:16:6:callibration	1
+../Core/Src/measurement.c:21:6:mux_select	3
+../Core/Src/measurement.c:32:6:measurement	7
+../Core/Src/measurement.c:84:6:values_eval	2

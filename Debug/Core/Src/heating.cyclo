@@ -1,0 +1,5 @@
+../Core/Src/heating.c:19:6:module_active	2
+../Core/Src/heating.c:27:6:modules_init	6
+../Core/Src/heating.c:46:6:is_module_heated	4
+../Core/Src/heating.c:67:6:all_heated	8
+../Core/Src/heating.c:87:6:modules_heating	17
