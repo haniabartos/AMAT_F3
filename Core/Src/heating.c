@@ -99,9 +99,9 @@ void modules_heating(Module *module1, Module *module2, Module *module3, Module *
 		 if (module1->active && module1->heated == 0) {
 				//	HAL_GPIO_WritePin(P2_LED_GPIO_Port, P2_LED_Pin, GPIO_PIN_SET);
 					is_module_heated(module1,prev_values1);
-				 /*       if (module1->heated == 1) {
+				/*        if (module1->heated == 1) {
 				                    HAL_GPIO_WritePin(P2_LED_GPIO_Port, P2_LED_Pin, GPIO_PIN_RESET);
-				    	}*/
+				    	} */
 				 }
 		 if (module2->active && module2->heated == 0) {
 			 	  HAL_GPIO_WritePin(P3_LED_GPIO_Port, P3_LED_Pin, GPIO_PIN_SET);

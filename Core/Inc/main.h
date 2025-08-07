@@ -73,6 +73,8 @@ void Error_Handler(void);
 #define S2_GPIO_Port GPIOA
 #define S3_Pin GPIO_PIN_10
 #define S3_GPIO_Port GPIOA
+#define DS_Pin GPIO_PIN_11
+#define DS_GPIO_Port GPIOA
 #define P5_LED_Pin GPIO_PIN_12
 #define P5_LED_GPIO_Port GPIOA
 #define P3_LED_Pin GPIO_PIN_3

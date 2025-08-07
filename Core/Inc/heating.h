@@ -13,7 +13,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#define HEATING_TIME 1200000
+#define HEATING_TIME 10000
 
 void module_active(Module *module, int id);
 void modules_init(Module *module1, Module *module2, Module *module3, Module *module4, Module *module5);

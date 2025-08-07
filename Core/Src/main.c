@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include "measurement.h"
 #include "heating.h"
+#include "ds18b20.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,6 +44,9 @@
 
 /* Private variables ---------------------------------------------------------*/
 
+
+TIM_HandleTypeDef htim6;
+
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
@@ -55,6 +59,12 @@ Module m5 = {false, 0, {0}};
 float vtec = 0;
 
 uint16_t heating_counter = 0;     // for counting heating sessions
+
+const uint8_t ds1[] = { 0x28, 0x6d, 0x38, 0x74, 0x10, 0x0, 0x0, 0xc1 };
+const uint8_t ds2[] = { 0x28, 0xde, 0xd1, 0x74, 0x10, 0x0, 0x0, 0xb6};
+
+float temp1,temp2;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -62,6 +72,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_ADC2_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_TIM6_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -111,6 +122,7 @@ int main(void)
   MX_GPIO_Init();
   MX_ADC2_Init();
   MX_USART2_UART_Init();
+  MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
 
   HAL_Delay(2000);
@@ -124,14 +136,37 @@ int main(void)
   }
 
   modules_init(&m1,&m2,&m3,&m4,&m5);
+
+	  if (ds18b20_init() != HAL_OK) {
+	    Error_Handler();
+	  }
+
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
 	  	    measurement(&m1,&m2,&m3,&m4,&m5,&vtec);
 	  		modules_heating(&m1,&m2,&m3,&m4,&m5,&heating_counter,&vtec);
+
+		  	  ds18b20_start_measure(ds1);
+		  	  ds18b20_start_measure(ds2);
+
+		  	  HAL_Delay(750);
+
+		  	  temp1 = ds18b20_get_temp(ds1);
+
+		  	   if (temp1 <= -80.0f)
+		  	      printf("Sensor error (1)...\n");
+
+		  	    temp2 = ds18b20_get_temp(ds2);
+
+		  	    if (temp2 <= -80.0f)
+		  	      printf("Sensor error (2)...\n");
 
 	  		values_eval(m1.values, &vtec);
 	  		values_eval(m2.values, &vtec);
@@ -144,8 +179,8 @@ int main(void)
 	  					m1.values[3],m1.values[4],m1.values[5],m1.values[6]);
 	  		}
 	  		if(m2.active){
-	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m2.values[0],m2.values[1],m2.values[2],
-	  					m2.values[3],m2.values[4],m2.values[5],m2.values[6]);
+	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.1f,%.1f\r\n ",m2.values[0],m2.values[1],m2.values[2],
+	  					m2.values[3],m2.values[4],m2.values[5],m2.values[6],temp1,temp2);
 	  				}
 	  		if(m3.active){
 	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m3.values[0],m3.values[1],m3.values[2],
@@ -161,6 +196,9 @@ int main(void)
 	  				}
 
 	  		HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin,SET);
+
+
+
 	  		HAL_Delay(10000);
 
 
@@ -292,6 +330,44 @@ static void MX_ADC2_Init(void)
 }
 
 /**
+  * @brief TIM6 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM6_Init(void)
+{
+
+  /* USER CODE BEGIN TIM6_Init 0 */
+
+  /* USER CODE END TIM6_Init 0 */
+
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM6_Init 1 */
+
+  /* USER CODE END TIM6_Init 1 */
+  htim6.Instance = TIM6;
+  htim6.Init.Prescaler = 63;
+  htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim6.Init.Period = 65535;
+  htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim6, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM6_Init 2 */
+
+  /* USER CODE END TIM6_Init 2 */
+
+}
+
+/**
   * @brief USART2 Initialization Function
   * @param None
   * @retval None
@@ -349,6 +425,9 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, P4_LED_Pin|P3_LED_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(DS_GPIO_Port, DS_Pin, GPIO_PIN_SET);
+
   /*Configure GPIO pins : LED_GREEN_Pin LED_RED_Pin S0_Pin P6_LED_Pin
                            S1_Pin S2_Pin S3_Pin P5_LED_Pin */
   GPIO_InitStruct.Pin = LED_GREEN_Pin|LED_RED_Pin|S0_Pin|P6_LED_Pin
@@ -364,6 +443,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : DS_Pin */
+  GPIO_InitStruct.Pin = DS_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(DS_GPIO_Port, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
