@@ -41,13 +41,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  18 .debug_line   0001436c  00000000  00000000  0003d23b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000ae089  00000000  00000000  000515a7  2**0
+ 19 .debug_str    000ae08b  00000000  00000000  000515a7  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000043  00000000  00000000  000ff630  2**0
+ 20 .comment      00000043  00000000  00000000  000ff632  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00004f44  00000000  00000000  000ff674  2**2
+ 21 .debug_frame  00004f44  00000000  00000000  000ff678  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 00000064  00000000  00000000  001045b8  2**0
+ 22 .debug_line_str 00000064  00000000  00000000  001045bc  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1518,7 +1518,7 @@ void modules_heating(Module *module1, Module *module2, Module *module3, Module *
 
 
 	while(!all_heated(module1,module2,module3,module4, module5, heating_counter)){
- 8000f7e:	e0a3      	b.n	80010c8 <modules_heating+0x158>
+ 8000f7e:	e0a2      	b.n	80010c6 <modules_heating+0x156>
 
 		HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
  8000f80:	2201      	movs	r2, #1
@@ -1536,7 +1536,7 @@ void modules_heating(Module *module1, Module *module2, Module *module3, Module *
  8000f9a:	68f8      	ldr	r0, [r7, #12]
  8000f9c:	f000 fd20 	bl	80019e0 <measurement>
 		printf("Heating in progress...\r\n");
- 8000fa0:	4855      	ldr	r0, [pc, #340]	@ (80010f8 <modules_heating+0x188>)
+ 8000fa0:	4854      	ldr	r0, [pc, #336]	@ (80010f4 <modules_heating+0x184>)
  8000fa2:	f005 fb5f 	bl	8006664 <puts>
 
 		 if (module1->active && module1->heated == 0) {
@@ -1550,7 +1550,7 @@ void modules_heating(Module *module1, Module *module2, Module *module3, Module *
  8000fb4:	d103      	bne.n	8000fbe <modules_heating+0x4e>
 				//	HAL_GPIO_WritePin(P2_LED_GPIO_Port, P2_LED_Pin, GPIO_PIN_SET);
 					is_module_heated(module1,prev_values1);
- 8000fb6:	4951      	ldr	r1, [pc, #324]	@ (80010fc <modules_heating+0x18c>)
+ 8000fb6:	4950      	ldr	r1, [pc, #320]	@ (80010f8 <modules_heating+0x188>)
  8000fb8:	68f8      	ldr	r0, [r7, #12]
  8000fba:	f7ff ff52 	bl	8000e62 <is_module_heated>
 				/*        if (module1->heated == 1) {
@@ -1569,10 +1569,10 @@ void modules_heating(Module *module1, Module *module2, Module *module3, Module *
 			 	  HAL_GPIO_WritePin(P3_LED_GPIO_Port, P3_LED_Pin, GPIO_PIN_SET);
  8000fce:	2201      	movs	r2, #1
  8000fd0:	2108      	movs	r1, #8
- 8000fd2:	484b      	ldr	r0, [pc, #300]	@ (8001100 <modules_heating+0x190>)
+ 8000fd2:	484a      	ldr	r0, [pc, #296]	@ (80010fc <modules_heating+0x18c>)
  8000fd4:	f002 fca4 	bl	8003920 <HAL_GPIO_WritePin>
 				   is_module_heated(module2,prev_values2);
- 8000fd8:	494a      	ldr	r1, [pc, #296]	@ (8001104 <modules_heating+0x194>)
+ 8000fd8:	4949      	ldr	r1, [pc, #292]	@ (8001100 <modules_heating+0x190>)
  8000fda:	68b8      	ldr	r0, [r7, #8]
  8000fdc:	f7ff ff41 	bl	8000e62 <is_module_heated>
 				       if (module2->heated == 1) {
@@ -1583,7 +1583,7 @@ void modules_heating(Module *module1, Module *module2, Module *module3, Module *
 				                    HAL_GPIO_WritePin(P3_LED_GPIO_Port, P3_LED_Pin, GPIO_PIN_RESET);
  8000fe8:	2200      	movs	r2, #0
  8000fea:	2108      	movs	r1, #8
- 8000fec:	4844      	ldr	r0, [pc, #272]	@ (8001100 <modules_heating+0x190>)
+ 8000fec:	4843      	ldr	r0, [pc, #268]	@ (80010fc <modules_heating+0x18c>)
  8000fee:	f002 fc97 	bl	8003920 <HAL_GPIO_WritePin>
 				    	}
 				    }
@@ -1599,10 +1599,10 @@ void modules_heating(Module *module1, Module *module2, Module *module3, Module *
 				  HAL_GPIO_WritePin(P4_LED_GPIO_Port, P4_LED_Pin, GPIO_PIN_SET);
  8001002:	2201      	movs	r2, #1
  8001004:	2101      	movs	r1, #1
- 8001006:	483e      	ldr	r0, [pc, #248]	@ (8001100 <modules_heating+0x190>)
+ 8001006:	483d      	ldr	r0, [pc, #244]	@ (80010fc <modules_heating+0x18c>)
  8001008:	f002 fc8a 	bl	8003920 <HAL_GPIO_WritePin>
 				   is_module_heated(module3,prev_values3);
- 800100c:	493e      	ldr	r1, [pc, #248]	@ (8001108 <modules_heating+0x198>)
+ 800100c:	493d      	ldr	r1, [pc, #244]	@ (8001104 <modules_heating+0x194>)
  800100e:	6878      	ldr	r0, [r7, #4]
  8001010:	f7ff ff27 	bl	8000e62 <is_module_heated>
 				      if (module3->heated == 1) {
@@ -1613,7 +1613,7 @@ void modules_heating(Module *module1, Module *module2, Module *module3, Module *
 				                    HAL_GPIO_WritePin(P4_LED_GPIO_Port, P4_LED_Pin, GPIO_PIN_RESET);
  800101c:	2200      	movs	r2, #0
  800101e:	2101      	movs	r1, #1
- 8001020:	4837      	ldr	r0, [pc, #220]	@ (8001100 <modules_heating+0x190>)
+ 8001020:	4836      	ldr	r0, [pc, #216]	@ (80010fc <modules_heating+0x18c>)
  8001022:	f002 fc7d 	bl	8003920 <HAL_GPIO_WritePin>
 				    	}
 				    }
@@ -1632,7 +1632,7 @@ void modules_heating(Module *module1, Module *module2, Module *module3, Module *
  800103c:	f04f 4090 	mov.w	r0, #1207959552	@ 0x48000000
  8001040:	f002 fc6e 	bl	8003920 <HAL_GPIO_WritePin>
 			       is_module_heated(module4,prev_values4);
- 8001044:	4931      	ldr	r1, [pc, #196]	@ (800110c <modules_heating+0x19c>)
+ 8001044:	4930      	ldr	r1, [pc, #192]	@ (8001108 <modules_heating+0x198>)
  8001046:	6838      	ldr	r0, [r7, #0]
  8001048:	f7ff ff0b 	bl	8000e62 <is_module_heated>
 				        if (module4->heated == 1) {
@@ -1662,7 +1662,7 @@ void modules_heating(Module *module1, Module *module2, Module *module3, Module *
  8001076:	f04f 4090 	mov.w	r0, #1207959552	@ 0x48000000
  800107a:	f002 fc51 	bl	8003920 <HAL_GPIO_WritePin>
 				   is_module_heated(module5,prev_values5);
- 800107e:	4924      	ldr	r1, [pc, #144]	@ (8001110 <modules_heating+0x1a0>)
+ 800107e:	4923      	ldr	r1, [pc, #140]	@ (800110c <modules_heating+0x19c>)
  8001080:	69b8      	ldr	r0, [r7, #24]
  8001082:	f7ff feee 	bl	8000e62 <is_module_heated>
 				          if (module5->heated == 1) {
@@ -1690,7 +1690,7 @@ void modules_heating(Module *module1, Module *module2, Module *module3, Module *
  80010aa:	f7ff ff23 	bl	8000ef4 <all_heated>
  80010ae:	4603      	mov	r3, r0
  80010b0:	2b00      	cmp	r3, #0
- 80010b2:	d11b      	bne.n	80010ec <modules_heating+0x17c>
+ 80010b2:	d11a      	bne.n	80010ea <modules_heating+0x17a>
 		            break;
 		        }
 
@@ -1703,43 +1703,43 @@ void modules_heating(Module *module1, Module *module2, Module *module3, Module *
  80010be:	801a      	strh	r2, [r3, #0]
 
 		 HAL_Delay(HEATING_TIME);
- 80010c0:	f242 7010 	movw	r0, #10000	@ 0x2710
- 80010c4:	f001 fa7a 	bl	80025bc <HAL_Delay>
+ 80010c0:	4813      	ldr	r0, [pc, #76]	@ (8001110 <modules_heating+0x1a0>)
+ 80010c2:	f001 fa7b 	bl	80025bc <HAL_Delay>
 	while(!all_heated(module1,module2,module3,module4, module5, heating_counter)){
- 80010c8:	69fb      	ldr	r3, [r7, #28]
- 80010ca:	9301      	str	r3, [sp, #4]
- 80010cc:	69bb      	ldr	r3, [r7, #24]
- 80010ce:	9300      	str	r3, [sp, #0]
- 80010d0:	683b      	ldr	r3, [r7, #0]
- 80010d2:	687a      	ldr	r2, [r7, #4]
- 80010d4:	68b9      	ldr	r1, [r7, #8]
- 80010d6:	68f8      	ldr	r0, [r7, #12]
- 80010d8:	f7ff ff0c 	bl	8000ef4 <all_heated>
- 80010dc:	4603      	mov	r3, r0
- 80010de:	f083 0301 	eor.w	r3, r3, #1
- 80010e2:	b2db      	uxtb	r3, r3
- 80010e4:	2b00      	cmp	r3, #0
- 80010e6:	f47f af4b 	bne.w	8000f80 <modules_heating+0x10>
+ 80010c6:	69fb      	ldr	r3, [r7, #28]
+ 80010c8:	9301      	str	r3, [sp, #4]
+ 80010ca:	69bb      	ldr	r3, [r7, #24]
+ 80010cc:	9300      	str	r3, [sp, #0]
+ 80010ce:	683b      	ldr	r3, [r7, #0]
+ 80010d0:	687a      	ldr	r2, [r7, #4]
+ 80010d2:	68b9      	ldr	r1, [r7, #8]
+ 80010d4:	68f8      	ldr	r0, [r7, #12]
+ 80010d6:	f7ff ff0d 	bl	8000ef4 <all_heated>
+ 80010da:	4603      	mov	r3, r0
+ 80010dc:	f083 0301 	eor.w	r3, r3, #1
+ 80010e0:	b2db      	uxtb	r3, r3
+ 80010e2:	2b00      	cmp	r3, #0
+ 80010e4:	f47f af4c 	bne.w	8000f80 <modules_heating+0x10>
 
 
 	}
 }
- 80010ea:	e000      	b.n	80010ee <modules_heating+0x17e>
+ 80010e8:	e000      	b.n	80010ec <modules_heating+0x17c>
 		            break;
- 80010ec:	bf00      	nop
+ 80010ea:	bf00      	nop
 }
- 80010ee:	bf00      	nop
- 80010f0:	3710      	adds	r7, #16
- 80010f2:	46bd      	mov	sp, r7
- 80010f4:	bd80      	pop	{r7, pc}
- 80010f6:	bf00      	nop
- 80010f8:	08008594 	.word	0x08008594
- 80010fc:	20000200 	.word	0x20000200
- 8001100:	48000400 	.word	0x48000400
- 8001104:	20000210 	.word	0x20000210
- 8001108:	20000220 	.word	0x20000220
- 800110c:	20000230 	.word	0x20000230
- 8001110:	20000240 	.word	0x20000240
+ 80010ec:	bf00      	nop
+ 80010ee:	3710      	adds	r7, #16
+ 80010f0:	46bd      	mov	sp, r7
+ 80010f2:	bd80      	pop	{r7, pc}
+ 80010f4:	08008594 	.word	0x08008594
+ 80010f8:	20000200 	.word	0x20000200
+ 80010fc:	48000400 	.word	0x48000400
+ 8001100:	20000210 	.word	0x20000210
+ 8001104:	20000220 	.word	0x20000220
+ 8001108:	20000230 	.word	0x20000230
+ 800110c:	20000240 	.word	0x20000240
+ 8001110:	00124f80 	.word	0x00124f80
 
 08001114 <__io_putchar>:
 /* USER CODE END PFP */
@@ -1964,8 +1964,8 @@ int main(void)
  8001270:	4b6b      	ldr	r3, [pc, #428]	@ (8001420 <main+0x2dc>)
  8001272:	781b      	ldrb	r3, [r3, #0]
  8001274:	2b00      	cmp	r3, #0
- 8001276:	d045      	beq.n	8001304 <main+0x1c0>
-	  			printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m1.values[0],m1.values[1],m1.values[2],
+ 8001276:	d05b      	beq.n	8001330 <main+0x1ec>
+	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.1f,%.1f\r\n ",m1.values[0],m1.values[1],m1.values[2],
  8001278:	4b69      	ldr	r3, [pc, #420]	@ (8001420 <main+0x2dc>)
  800127a:	689b      	ldr	r3, [r3, #8]
  800127c:	4618      	mov	r0, r3
@@ -1975,131 +1975,131 @@ int main(void)
  8001288:	68db      	ldr	r3, [r3, #12]
  800128a:	4618      	mov	r0, r3
  800128c:	f7ff f95c 	bl	8000548 <__aeabi_f2d>
- 8001290:	4680      	mov	r8, r0
- 8001292:	4689      	mov	r9, r1
+ 8001290:	e9c7 0106 	strd	r0, r1, [r7, #24]
  8001294:	4b62      	ldr	r3, [pc, #392]	@ (8001420 <main+0x2dc>)
  8001296:	691b      	ldr	r3, [r3, #16]
  8001298:	4618      	mov	r0, r3
  800129a:	f7ff f955 	bl	8000548 <__aeabi_f2d>
- 800129e:	4682      	mov	sl, r0
- 80012a0:	468b      	mov	fp, r1
-	  					m1.values[3],m1.values[4],m1.values[5],m1.values[6]);
+ 800129e:	e9c7 0104 	strd	r0, r1, [r7, #16]
+	  					m1.values[3],m1.values[4],m1.values[5],m1.values[6],temp1,temp2);
  80012a2:	4b5f      	ldr	r3, [pc, #380]	@ (8001420 <main+0x2dc>)
  80012a4:	695b      	ldr	r3, [r3, #20]
-	  			printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m1.values[0],m1.values[1],m1.values[2],
+	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.1f,%.1f\r\n ",m1.values[0],m1.values[1],m1.values[2],
  80012a6:	4618      	mov	r0, r3
  80012a8:	f7ff f94e 	bl	8000548 <__aeabi_f2d>
- 80012ac:	e9c7 0106 	strd	r0, r1, [r7, #24]
-	  					m1.values[3],m1.values[4],m1.values[5],m1.values[6]);
+ 80012ac:	e9c7 0102 	strd	r0, r1, [r7, #8]
+	  					m1.values[3],m1.values[4],m1.values[5],m1.values[6],temp1,temp2);
  80012b0:	4b5b      	ldr	r3, [pc, #364]	@ (8001420 <main+0x2dc>)
  80012b2:	699b      	ldr	r3, [r3, #24]
-	  			printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m1.values[0],m1.values[1],m1.values[2],
+	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.1f,%.1f\r\n ",m1.values[0],m1.values[1],m1.values[2],
  80012b4:	4618      	mov	r0, r3
  80012b6:	f7ff f947 	bl	8000548 <__aeabi_f2d>
- 80012ba:	e9c7 0104 	strd	r0, r1, [r7, #16]
-	  					m1.values[3],m1.values[4],m1.values[5],m1.values[6]);
+ 80012ba:	e9c7 0100 	strd	r0, r1, [r7]
+	  					m1.values[3],m1.values[4],m1.values[5],m1.values[6],temp1,temp2);
  80012be:	4b58      	ldr	r3, [pc, #352]	@ (8001420 <main+0x2dc>)
  80012c0:	69db      	ldr	r3, [r3, #28]
-	  			printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m1.values[0],m1.values[1],m1.values[2],
+	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.1f,%.1f\r\n ",m1.values[0],m1.values[1],m1.values[2],
  80012c2:	4618      	mov	r0, r3
  80012c4:	f7ff f940 	bl	8000548 <__aeabi_f2d>
- 80012c8:	4604      	mov	r4, r0
- 80012ca:	460d      	mov	r5, r1
-	  					m1.values[3],m1.values[4],m1.values[5],m1.values[6]);
+ 80012c8:	4682      	mov	sl, r0
+ 80012ca:	468b      	mov	fp, r1
+	  					m1.values[3],m1.values[4],m1.values[5],m1.values[6],temp1,temp2);
  80012cc:	4b54      	ldr	r3, [pc, #336]	@ (8001420 <main+0x2dc>)
  80012ce:	6a1b      	ldr	r3, [r3, #32]
-	  			printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m1.values[0],m1.values[1],m1.values[2],
+	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.1f,%.1f\r\n ",m1.values[0],m1.values[1],m1.values[2],
  80012d0:	4618      	mov	r0, r3
  80012d2:	f7ff f939 	bl	8000548 <__aeabi_f2d>
- 80012d6:	4602      	mov	r2, r0
- 80012d8:	460b      	mov	r3, r1
- 80012da:	e9cd 230a 	strd	r2, r3, [sp, #40]	@ 0x28
- 80012de:	e9cd 4508 	strd	r4, r5, [sp, #32]
- 80012e2:	ed97 7b04 	vldr	d7, [r7, #16]
- 80012e6:	ed8d 7b06 	vstr	d7, [sp, #24]
- 80012ea:	ed97 7b06 	vldr	d7, [r7, #24]
- 80012ee:	ed8d 7b04 	vstr	d7, [sp, #16]
- 80012f2:	e9cd ab02 	strd	sl, fp, [sp, #8]
- 80012f6:	e9cd 8900 	strd	r8, r9, [sp]
- 80012fa:	e9d7 2308 	ldrd	r2, r3, [r7, #32]
- 80012fe:	4856      	ldr	r0, [pc, #344]	@ (8001458 <main+0x314>)
- 8001300:	f005 f948 	bl	8006594 <iprintf>
+ 80012d6:	4680      	mov	r8, r0
+ 80012d8:	4689      	mov	r9, r1
+ 80012da:	4b55      	ldr	r3, [pc, #340]	@ (8001430 <main+0x2ec>)
+ 80012dc:	681b      	ldr	r3, [r3, #0]
+ 80012de:	4618      	mov	r0, r3
+ 80012e0:	f7ff f932 	bl	8000548 <__aeabi_f2d>
+ 80012e4:	4604      	mov	r4, r0
+ 80012e6:	460d      	mov	r5, r1
+ 80012e8:	4b54      	ldr	r3, [pc, #336]	@ (800143c <main+0x2f8>)
+ 80012ea:	681b      	ldr	r3, [r3, #0]
+ 80012ec:	4618      	mov	r0, r3
+ 80012ee:	f7ff f92b 	bl	8000548 <__aeabi_f2d>
+ 80012f2:	4602      	mov	r2, r0
+ 80012f4:	460b      	mov	r3, r1
+ 80012f6:	e9cd 230e 	strd	r2, r3, [sp, #56]	@ 0x38
+ 80012fa:	e9cd 450c 	strd	r4, r5, [sp, #48]	@ 0x30
+ 80012fe:	e9cd 890a 	strd	r8, r9, [sp, #40]	@ 0x28
+ 8001302:	e9cd ab08 	strd	sl, fp, [sp, #32]
+ 8001306:	ed97 7b00 	vldr	d7, [r7]
+ 800130a:	ed8d 7b06 	vstr	d7, [sp, #24]
+ 800130e:	ed97 7b02 	vldr	d7, [r7, #8]
+ 8001312:	ed8d 7b04 	vstr	d7, [sp, #16]
+ 8001316:	ed97 7b04 	vldr	d7, [r7, #16]
+ 800131a:	ed8d 7b02 	vstr	d7, [sp, #8]
+ 800131e:	ed97 7b06 	vldr	d7, [r7, #24]
+ 8001322:	ed8d 7b00 	vstr	d7, [sp]
+ 8001326:	e9d7 2308 	ldrd	r2, r3, [r7, #32]
+ 800132a:	484b      	ldr	r0, [pc, #300]	@ (8001458 <main+0x314>)
+ 800132c:	f005 f932 	bl	8006594 <iprintf>
 	  		}
 	  		if(m2.active){
- 8001304:	4b45      	ldr	r3, [pc, #276]	@ (800141c <main+0x2d8>)
- 8001306:	781b      	ldrb	r3, [r3, #0]
- 8001308:	2b00      	cmp	r3, #0
- 800130a:	d05b      	beq.n	80013c4 <main+0x280>
-	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.1f,%.1f\r\n ",m2.values[0],m2.values[1],m2.values[2],
- 800130c:	4b43      	ldr	r3, [pc, #268]	@ (800141c <main+0x2d8>)
- 800130e:	689b      	ldr	r3, [r3, #8]
- 8001310:	4618      	mov	r0, r3
- 8001312:	f7ff f919 	bl	8000548 <__aeabi_f2d>
- 8001316:	e9c7 0108 	strd	r0, r1, [r7, #32]
- 800131a:	4b40      	ldr	r3, [pc, #256]	@ (800141c <main+0x2d8>)
- 800131c:	68db      	ldr	r3, [r3, #12]
- 800131e:	4618      	mov	r0, r3
- 8001320:	f7ff f912 	bl	8000548 <__aeabi_f2d>
- 8001324:	e9c7 0106 	strd	r0, r1, [r7, #24]
- 8001328:	4b3c      	ldr	r3, [pc, #240]	@ (800141c <main+0x2d8>)
- 800132a:	691b      	ldr	r3, [r3, #16]
- 800132c:	4618      	mov	r0, r3
- 800132e:	f7ff f90b 	bl	8000548 <__aeabi_f2d>
- 8001332:	e9c7 0104 	strd	r0, r1, [r7, #16]
-	  					m2.values[3],m2.values[4],m2.values[5],m2.values[6],temp1,temp2);
- 8001336:	4b39      	ldr	r3, [pc, #228]	@ (800141c <main+0x2d8>)
- 8001338:	695b      	ldr	r3, [r3, #20]
-	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.1f,%.1f\r\n ",m2.values[0],m2.values[1],m2.values[2],
- 800133a:	4618      	mov	r0, r3
- 800133c:	f7ff f904 	bl	8000548 <__aeabi_f2d>
- 8001340:	e9c7 0102 	strd	r0, r1, [r7, #8]
-	  					m2.values[3],m2.values[4],m2.values[5],m2.values[6],temp1,temp2);
- 8001344:	4b35      	ldr	r3, [pc, #212]	@ (800141c <main+0x2d8>)
- 8001346:	699b      	ldr	r3, [r3, #24]
-	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.1f,%.1f\r\n ",m2.values[0],m2.values[1],m2.values[2],
- 8001348:	4618      	mov	r0, r3
- 800134a:	f7ff f8fd 	bl	8000548 <__aeabi_f2d>
- 800134e:	e9c7 0100 	strd	r0, r1, [r7]
-	  					m2.values[3],m2.values[4],m2.values[5],m2.values[6],temp1,temp2);
- 8001352:	4b32      	ldr	r3, [pc, #200]	@ (800141c <main+0x2d8>)
- 8001354:	69db      	ldr	r3, [r3, #28]
-	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.1f,%.1f\r\n ",m2.values[0],m2.values[1],m2.values[2],
- 8001356:	4618      	mov	r0, r3
- 8001358:	f7ff f8f6 	bl	8000548 <__aeabi_f2d>
- 800135c:	4682      	mov	sl, r0
- 800135e:	468b      	mov	fp, r1
-	  					m2.values[3],m2.values[4],m2.values[5],m2.values[6],temp1,temp2);
- 8001360:	4b2e      	ldr	r3, [pc, #184]	@ (800141c <main+0x2d8>)
- 8001362:	6a1b      	ldr	r3, [r3, #32]
-	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.1f,%.1f\r\n ",m2.values[0],m2.values[1],m2.values[2],
- 8001364:	4618      	mov	r0, r3
- 8001366:	f7ff f8ef 	bl	8000548 <__aeabi_f2d>
- 800136a:	4680      	mov	r8, r0
- 800136c:	4689      	mov	r9, r1
- 800136e:	4b30      	ldr	r3, [pc, #192]	@ (8001430 <main+0x2ec>)
- 8001370:	681b      	ldr	r3, [r3, #0]
- 8001372:	4618      	mov	r0, r3
- 8001374:	f7ff f8e8 	bl	8000548 <__aeabi_f2d>
- 8001378:	4604      	mov	r4, r0
- 800137a:	460d      	mov	r5, r1
- 800137c:	4b2f      	ldr	r3, [pc, #188]	@ (800143c <main+0x2f8>)
- 800137e:	681b      	ldr	r3, [r3, #0]
- 8001380:	4618      	mov	r0, r3
- 8001382:	f7ff f8e1 	bl	8000548 <__aeabi_f2d>
- 8001386:	4602      	mov	r2, r0
- 8001388:	460b      	mov	r3, r1
- 800138a:	e9cd 230e 	strd	r2, r3, [sp, #56]	@ 0x38
- 800138e:	e9cd 450c 	strd	r4, r5, [sp, #48]	@ 0x30
- 8001392:	e9cd 890a 	strd	r8, r9, [sp, #40]	@ 0x28
- 8001396:	e9cd ab08 	strd	sl, fp, [sp, #32]
- 800139a:	ed97 7b00 	vldr	d7, [r7]
- 800139e:	ed8d 7b06 	vstr	d7, [sp, #24]
- 80013a2:	ed97 7b02 	vldr	d7, [r7, #8]
- 80013a6:	ed8d 7b04 	vstr	d7, [sp, #16]
- 80013aa:	ed97 7b04 	vldr	d7, [r7, #16]
- 80013ae:	ed8d 7b02 	vstr	d7, [sp, #8]
- 80013b2:	ed97 7b06 	vldr	d7, [r7, #24]
- 80013b6:	ed8d 7b00 	vstr	d7, [sp]
+ 8001330:	4b3a      	ldr	r3, [pc, #232]	@ (800141c <main+0x2d8>)
+ 8001332:	781b      	ldrb	r3, [r3, #0]
+ 8001334:	2b00      	cmp	r3, #0
+ 8001336:	d045      	beq.n	80013c4 <main+0x280>
+	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m2.values[0],m2.values[1],m2.values[2],
+ 8001338:	4b38      	ldr	r3, [pc, #224]	@ (800141c <main+0x2d8>)
+ 800133a:	689b      	ldr	r3, [r3, #8]
+ 800133c:	4618      	mov	r0, r3
+ 800133e:	f7ff f903 	bl	8000548 <__aeabi_f2d>
+ 8001342:	e9c7 0108 	strd	r0, r1, [r7, #32]
+ 8001346:	4b35      	ldr	r3, [pc, #212]	@ (800141c <main+0x2d8>)
+ 8001348:	68db      	ldr	r3, [r3, #12]
+ 800134a:	4618      	mov	r0, r3
+ 800134c:	f7ff f8fc 	bl	8000548 <__aeabi_f2d>
+ 8001350:	4680      	mov	r8, r0
+ 8001352:	4689      	mov	r9, r1
+ 8001354:	4b31      	ldr	r3, [pc, #196]	@ (800141c <main+0x2d8>)
+ 8001356:	691b      	ldr	r3, [r3, #16]
+ 8001358:	4618      	mov	r0, r3
+ 800135a:	f7ff f8f5 	bl	8000548 <__aeabi_f2d>
+ 800135e:	4682      	mov	sl, r0
+ 8001360:	468b      	mov	fp, r1
+	  					m2.values[3],m2.values[4],m2.values[5],m2.values[6]);
+ 8001362:	4b2e      	ldr	r3, [pc, #184]	@ (800141c <main+0x2d8>)
+ 8001364:	695b      	ldr	r3, [r3, #20]
+	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m2.values[0],m2.values[1],m2.values[2],
+ 8001366:	4618      	mov	r0, r3
+ 8001368:	f7ff f8ee 	bl	8000548 <__aeabi_f2d>
+ 800136c:	e9c7 0106 	strd	r0, r1, [r7, #24]
+	  					m2.values[3],m2.values[4],m2.values[5],m2.values[6]);
+ 8001370:	4b2a      	ldr	r3, [pc, #168]	@ (800141c <main+0x2d8>)
+ 8001372:	699b      	ldr	r3, [r3, #24]
+	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m2.values[0],m2.values[1],m2.values[2],
+ 8001374:	4618      	mov	r0, r3
+ 8001376:	f7ff f8e7 	bl	8000548 <__aeabi_f2d>
+ 800137a:	e9c7 0104 	strd	r0, r1, [r7, #16]
+	  					m2.values[3],m2.values[4],m2.values[5],m2.values[6]);
+ 800137e:	4b27      	ldr	r3, [pc, #156]	@ (800141c <main+0x2d8>)
+ 8001380:	69db      	ldr	r3, [r3, #28]
+	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m2.values[0],m2.values[1],m2.values[2],
+ 8001382:	4618      	mov	r0, r3
+ 8001384:	f7ff f8e0 	bl	8000548 <__aeabi_f2d>
+ 8001388:	4604      	mov	r4, r0
+ 800138a:	460d      	mov	r5, r1
+	  					m2.values[3],m2.values[4],m2.values[5],m2.values[6]);
+ 800138c:	4b23      	ldr	r3, [pc, #140]	@ (800141c <main+0x2d8>)
+ 800138e:	6a1b      	ldr	r3, [r3, #32]
+	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m2.values[0],m2.values[1],m2.values[2],
+ 8001390:	4618      	mov	r0, r3
+ 8001392:	f7ff f8d9 	bl	8000548 <__aeabi_f2d>
+ 8001396:	4602      	mov	r2, r0
+ 8001398:	460b      	mov	r3, r1
+ 800139a:	e9cd 230a 	strd	r2, r3, [sp, #40]	@ 0x28
+ 800139e:	e9cd 4508 	strd	r4, r5, [sp, #32]
+ 80013a2:	ed97 7b04 	vldr	d7, [r7, #16]
+ 80013a6:	ed8d 7b06 	vstr	d7, [sp, #24]
+ 80013aa:	ed97 7b06 	vldr	d7, [r7, #24]
+ 80013ae:	ed8d 7b04 	vstr	d7, [sp, #16]
+ 80013b2:	e9cd ab02 	strd	sl, fp, [sp, #8]
+ 80013b6:	e9cd 8900 	strd	r8, r9, [sp]
  80013ba:	e9d7 2308 	ldrd	r2, r3, [r7, #32]
  80013be:	4827      	ldr	r0, [pc, #156]	@ (800145c <main+0x318>)
  80013c0:	f005 f8e8 	bl	8006594 <iprintf>
@@ -2159,7 +2159,7 @@ int main(void)
  8001450:	2000039c 	.word	0x2000039c
  8001454:	200003c0 	.word	0x200003c0
  8001458:	080085d4 	.word	0x080085d4
- 800145c:	080085fc 	.word	0x080085fc
+ 800145c:	08008604 	.word	0x08008604
 	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m3.values[0],m3.values[1],m3.values[2],
  8001460:	4618      	mov	r0, r3
  8001462:	f7ff f871 	bl	8000548 <__aeabi_f2d>
@@ -2338,7 +2338,7 @@ int main(void)
  80015ec:	e5e2      	b.n	80011b4 <main+0x70>
  80015ee:	bf00      	nop
  80015f0:	20000370 	.word	0x20000370
- 80015f4:	080085d4 	.word	0x080085d4
+ 80015f4:	08008604 	.word	0x08008604
  80015f8:	20000394 	.word	0x20000394
  80015fc:	200003b8 	.word	0x200003b8
 

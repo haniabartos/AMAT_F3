@@ -4859,8 +4859,9 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
                 0x08008568                        . = ALIGN (0x4)
  *(.rodata)
  .rodata        0x08008568       0x44 ./Core/Src/heating.o
- .rodata        0x080085ac       0x80 ./Core/Src/main.o
+ .rodata        0x080085ac       0x7e ./Core/Src/main.o
  *(.rodata*)
+ *fill*         0x0800862a        0x2 
  .rodata.ds1    0x0800862c        0x8 ./Core/Src/main.o
                 0x0800862c                ds1
  .rodata.ds2    0x08008634        0x8 ./Core/Src/main.o
@@ -5521,28 +5522,28 @@ LOAD C:/ST/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_line    0x0000fd31     0x1a08 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.o
  .debug_line    0x00011739     0x2c33 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o
 
-.debug_str      0x00000000    0xae089
- .debug_str     0x00000000    0xae089 ./Core/Src/ds18b20.o
+.debug_str      0x00000000    0xae08b
+ .debug_str     0x00000000    0xae08b ./Core/Src/ds18b20.o
                               0xa7622 (size before relaxing)
- .debug_str     0x000ae089    0xa7f2c ./Core/Src/heating.o
- .debug_str     0x000ae089    0xa8d07 ./Core/Src/main.o
- .debug_str     0x000ae089    0xa82c3 ./Core/Src/measurement.o
- .debug_str     0x000ae089    0xa4f79 ./Core/Src/stm32f3xx_hal_msp.o
- .debug_str     0x000ae089    0xa44f7 ./Core/Src/stm32f3xx_it.o
- .debug_str     0x000ae089     0x99e0 ./Core/Src/syscalls.o
- .debug_str     0x000ae089     0x777e ./Core/Src/sysmem.o
- .debug_str     0x000ae089    0xa43b4 ./Core/Src/system_stm32f3xx.o
- .debug_str     0x000ae089    0xa4aa9 ./Core/Src/wire.o
- .debug_str     0x000ae089       0x80 ./Core/Startup/startup_stm32f303k8tx.o
- .debug_str     0x000ae089    0xa4aa4 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o
- .debug_str     0x000ae089    0xa50ba ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc_ex.o
- .debug_str     0x000ae089    0xa49c9 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o
- .debug_str     0x000ae089    0xa4593 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.o
- .debug_str     0x000ae089    0xa4854 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.o
- .debug_str     0x000ae089    0xa4553 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.o
- .debug_str     0x000ae089    0xa57eb ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.o
- .debug_str     0x000ae089    0xa5031 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.o
- .debug_str     0x000ae089    0xa50d7 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o
+ .debug_str     0x000ae08b    0xa7f2e ./Core/Src/heating.o
+ .debug_str     0x000ae08b    0xa8d09 ./Core/Src/main.o
+ .debug_str     0x000ae08b    0xa82c3 ./Core/Src/measurement.o
+ .debug_str     0x000ae08b    0xa4f79 ./Core/Src/stm32f3xx_hal_msp.o
+ .debug_str     0x000ae08b    0xa44f7 ./Core/Src/stm32f3xx_it.o
+ .debug_str     0x000ae08b     0x99e0 ./Core/Src/syscalls.o
+ .debug_str     0x000ae08b     0x777e ./Core/Src/sysmem.o
+ .debug_str     0x000ae08b    0xa43b4 ./Core/Src/system_stm32f3xx.o
+ .debug_str     0x000ae08b    0xa4aa9 ./Core/Src/wire.o
+ .debug_str     0x000ae08b       0x80 ./Core/Startup/startup_stm32f303k8tx.o
+ .debug_str     0x000ae08b    0xa4aa4 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal.o
+ .debug_str     0x000ae08b    0xa50ba ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc_ex.o
+ .debug_str     0x000ae08b    0xa49c9 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_cortex.o
+ .debug_str     0x000ae08b    0xa4593 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_gpio.o
+ .debug_str     0x000ae08b    0xa4854 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc.o
+ .debug_str     0x000ae08b    0xa4553 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_rcc_ex.o
+ .debug_str     0x000ae08b    0xa57eb ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim.o
+ .debug_str     0x000ae08b    0xa5031 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_tim_ex.o
+ .debug_str     0x000ae08b    0xa50d7 ./Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_uart.o
 
 .comment        0x00000000       0x43
  .comment       0x00000000       0x43 ./Core/Src/ds18b20.o

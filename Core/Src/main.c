@@ -175,12 +175,12 @@ int main(void)
 	  		values_eval(m5.values, &vtec);
 
 	  		if(m1.active){
-	  			printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m1.values[0],m1.values[1],m1.values[2],
-	  					m1.values[3],m1.values[4],m1.values[5],m1.values[6]);
+	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.1f,%.1f\r\n ",m1.values[0],m1.values[1],m1.values[2],
+	  					m1.values[3],m1.values[4],m1.values[5],m1.values[6],temp1,temp2);
 	  		}
 	  		if(m2.active){
-	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.1f,%.1f\r\n ",m2.values[0],m2.values[1],m2.values[2],
-	  					m2.values[3],m2.values[4],m2.values[5],m2.values[6],temp1,temp2);
+	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m2.values[0],m2.values[1],m2.values[2],
+	  					m2.values[3],m2.values[4],m2.values[5],m2.values[6]);
 	  				}
 	  		if(m3.active){
 	  					printf("%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f\r\n ",m3.values[0],m3.values[1],m3.values[2],
